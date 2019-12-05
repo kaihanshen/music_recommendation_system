@@ -1,0 +1,45 @@
+<h1>Welcome to the MUSIC world!</h1>
+<p>You've successfully logged in.</p>
+
+<form class="form-inline mr-auto" style="margin-top: 30px;">
+    <h3 style="margin-right: 20px;">Search your favourite song here:</h3>
+
+    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" #box (keyup)="onKey(box.value)" size="60">
+    
+    <button class="btn btn-outline-success btn-rounded btn-sm my-0" type="submit" (click)="findMusic(searchName)">Search</button>
+    
+</form>
+<div class="alert alert-info" role="alert" *ngIf="musicInfo.id != -1 && musicInfo.id != 0">
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        <div *ngIf="musicInfo.id != 0">
+            <p>Song Name: {{ musicInfo.title }}</p>
+            <p>Description: {{ musicInfo.desc }}</p>
+            <p>Year: {{ musicInfo.year }}</p>
+        </div>
+</div>
+
+<div class="alert alert-danger" role="alert" *ngIf="musicInfo.id == 0">
+        <button type="button" class="close" aria-label="Close" (click)="close()">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        <div *ngIf="musicInfo.id == 0">
+            <p>No records are found!</p>
+        </div>
+        
+</div>
+<br>
+<br>
+<div style="margin-bottom: 20px;">
+    <h3>How do you feel today?</h3>
+</div>
+
+<button type="button" class="btn btn-info" routerLink="/mood">Press here to record your moods!</button>
+<br>
+<br>
+<br>
+
+<h3>Let's check what your friends are doing!</h3>
+<button type="button" class="btn btn-success" routerLink="/friends">Press here to check your friends list!</button>
+

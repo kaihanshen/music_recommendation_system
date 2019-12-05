@@ -1,0 +1,28 @@
+<h2>Enter your username here to check your friend list!</h2>
+<br>
+<h5>Username</h5>
+<form>
+    <div class="row">
+        <div class="col">
+        <input type="text" class="form-control" placeholder="User name" #box (keyup)="onKey(box.value)">
+        </div>
+    </div>
+</form>
+<br>
+<button type="button" class="btn btn-outline-success" (click)="fetch()">Check Your Friends</button>
+<br>
+<ul class="list-group" style="margin-top: 20px; margin-bottom: 20px;">
+    <li *ngFor="let friend of friends" class="list-group-item list-group-item-action">
+        <h5  (click) = "friendClicked(friend)">{{friend}}</h5>
+    </li>
+</ul>
+<br>
+<div class="alert alert-info" role="alert" *ngIf="this.selectedUsername!=''">
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    <div *ngIf="this.selectedUsername!=''">
+        <p>His/Her favourite collections: {{music}}</p>
+        <p>His/Her favourite artists: {{singers}}</p>
+    </div>
+</div>

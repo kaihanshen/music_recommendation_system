@@ -1,0 +1,35 @@
+<div style="font-size: 30px;">
+    <i class="icon-heart">Here are your favourite collections!</i>
+</div>
+
+<!-- <ul>
+  <li *ngFor="let music of musics">
+    <h4 (click) = "musicClicked(music)">{{music.title}}</h4>
+  </li>
+</ul> -->
+
+
+<ul class="list-group" style="margin-top: 20px; margin-bottom: 20px;">
+  <li *ngFor="let music of musics" class="list-group-item list-group-item-secondary">
+    <h5  (click) = "musicClicked(music)">{{music.title}}</h5>
+  </li>
+</ul>
+
+<div class="alert alert-info" role="alert" *ngIf="detailedInfo.year!=0">
+    <button type="button" class="close" aria-label="Close" (click)="close()">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    <div *ngIf="detailedInfo.year!=0">
+        <p>{{ detailedInfo.artist }} is the artist of {{ detailedInfo.song }}. He/She was born in {{ detailedInfo.country }} in {{ detailedInfo.year }}. He/She once won the {{ detailedInfo.awards }}.</p>
+    </div>
+</div>
+
+<hr>
+Title <input type="text" [(ngModel)]="selectedMusic.title"/><br>
+Description <input type="text" [(ngModel)]="selectedMusic.desc"/><br>
+Year <input type="text" [(ngModel)]="selectedMusic.year"/><br>
+<br>
+<button *ngIf="selectedMusic.id != -1" (click)="updateMusic()" class="btn btn-outline-success" style="margin-right: 10px; "> PUT </button>
+<button (click)="createMusic()" class="btn btn-outline-success" style="margin-right: 10px; "> POST </button>
+<button *ngIf="selectedMusic.id != -1" (click)="deleteMusic()" class="btn btn-outline-success" style="margin-right: 10px; "> DELETE </button>
+<button *ngIf="selectedMusic.id != -1" (click)="getSinger()" class="btn btn-outline-success" style="margin-right: 10px; "> Detailed Info </button>
